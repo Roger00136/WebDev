@@ -1,0 +1,149 @@
+/* 1. Base Reset & Typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f7f6;
+    
+    /* CSS Grid Layout Setup */
+    display: grid;
+    grid-template-columns: 1fr 300px; /* Main content gets remaining space, Sidebar gets exactly 300px */
+    grid-template-rows: auto 1fr auto; /* Nav (auto height), Main/Sidebar (fills space), Footer (auto height) */
+    grid-template-areas: 
+        "nav nav"
+        "main sidebar"
+        "footer footer";
+    min-height: 100vh; /* Ensures footer stays at bottom even with little content */
+}
+
+/* 2. Navigation */
+.nav {
+    grid-area: nav;
+    background-color: #2c3e50;
+    padding: 1rem 2rem;
+    display: flex;
+    gap: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.nav a:hover {
+    color: #3498db;
+}
+
+/* 3. Main Content Container */
+.container {
+    grid-area: main;
+    background-color: #ffffff;
+    padding: 2.5rem;
+    margin: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.container p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+/* 4. Button Styling */
+.btn {
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+.btn:active {
+    transform: scale(0.97); /* Slight click-down effect */
+}
+
+/* 5. Sidebar */
+.sidebar {
+    grid-area: sidebar;
+    background-color: #ffffff;
+    padding: 2rem;
+    margin: 2rem 2rem 2rem 0; /* Top, Right, Bottom, Left (no left margin to stay close to container) */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.sidebar h3 {
+    color: #2c3e50;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #ecf0f1;
+}
+
+.sidebar ul {
+    list-style-type: none;
+}
+
+.sidebar li {
+    margin-bottom: 1rem;
+}
+
+.sidebar a {
+    color: #7f8c8d;
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.sidebar a:hover {
+    color: #3498db;
+    padding-left: 5px; /* Nudges the link slightly to the right on hover */
+}
+
+/* 6. Footer */
+.footer {
+    grid-area: footer;
+    background-color: #2c3e50;
+    color: #bdc3c7;
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* 7. Responsive Breakpoint (Mobile & Tablets) */
+@media (max-width: 800px) {
+    body {
+        grid-template-columns: 1fr; /* Switch to a single column */
+        grid-template-areas: 
+            "nav"
+            "main"
+            "sidebar"
+            "footer";
+    }
+
+    .container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    .sidebar {
+        margin: 0 1rem 1rem 1rem;
+    }
+}
